@@ -16,7 +16,11 @@ exact name or path.
 
 ## Scope decisions (locked in 2026-07-28)
 
-- **Repo**: private, local only for now (no GitHub remote yet).
+- **Repo**: private, pushed to `github.com/syzayd/dreamos-college-project`. Note the repo
+  name differs from the local folder name (`DreamOS`) - `syzayd/dreamos` already exists as
+  an unrelated project ("Alt+Space command bar backed by a local LLM gateway"), so this one
+  got a distinct name to avoid colliding with it. Don't rename this repo to plain "dreamos"
+  without checking that other repo first.
 - **Desktop shell**: Tauri (not Electron) - chosen deliberately despite needing a Rust
   toolchain + MSVC Build Tools install, for the lighter/more "systems" feel appropriate to a
   final-year demo.

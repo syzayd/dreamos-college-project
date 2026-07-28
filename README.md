@@ -77,6 +77,21 @@ npm run tauri dev
 Type a request like "find my resume" or "organize my unsorted files" into the DreamOS
 window.
 
+## Building an installer
+
+```
+cd frontend
+npm run tauri build
+```
+
+Produces both a Windows installer at
+`frontend/src-tauri/target/release/bundle/msi/DreamOS_0.1.0_x64_en-US.msi` and
+`frontend/src-tauri/target/release/bundle/nsis/DreamOS_0.1.0_x64-setup.exe`. Either installs
+DreamOS as a standalone desktop app with a Start Menu entry - the backend (Ollama + the
+FastAPI service) still needs to be running separately, the installer only packages the
+Tauri/React shell. Build artifacts are gitignored (`target/`), not committed - rebuild
+locally with the command above whenever you need a fresh installer.
+
 ## Tests
 
 ```
