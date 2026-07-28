@@ -1,0 +1,4 @@
+Meeting - 2026-04-12
+Discussed complexity ranking of the three proposals (Cognitive Spectre, DreamOS, SentinelLLM).
+Faculty guide leaned toward DreamOS for "systems-level ambition" - selected it as final project.
+Next meeting: review of the knowledge graph design, date TBD.

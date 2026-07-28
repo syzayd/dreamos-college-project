@@ -1,0 +1,3 @@
+Untitled notes from a random Tuesday
+Thinking the Intelligent Workspace Manager module could suggest "related files" based on
+what's been recently opened together, not just semantic similarity alone.

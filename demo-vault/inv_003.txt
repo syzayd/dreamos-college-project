@@ -1,0 +1,6 @@
+INVOICE #INV-2026-003
+Vendor: BlueRidge Cloud Hosting
+Amount Due: INR 4,250.00
+Due Date: 2026-04-15
+Line items: VPS hosting (March), backup storage add-on.
+Status: PAID on 2026-04-10.

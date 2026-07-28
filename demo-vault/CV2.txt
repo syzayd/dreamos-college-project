@@ -1,0 +1,11 @@
+CURRICULUM VITAE - Om Vyas
+Roll No. 2305170, Department of Information Technology
+
+OBJECTIVE
+Seeking a role applying AI to real-world systems, particularly developer tooling and security.
+
+EDUCATION
+B.Tech IT, MGM University, expected 2027.
+
+TECHNICAL SKILLS
+Python, JavaScript, basic Docker, SQL, Linux fundamentals.

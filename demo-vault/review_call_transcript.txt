@@ -1,0 +1,5 @@
+Guide review call - rough transcript excerpt
+Guide: "Make sure the natural language interface actually routes to different modules,
+not just search everything."
+Zaid: "Understood, we'll add an intent classification step before dispatch."
+Guide: "Also keep the demo vault realistic - messy filenames, not clean sample data."

@@ -1,0 +1,3 @@
+-- DBMS lab practice queries, unrelated to DreamOS but kept in the same drive
+SELECT student_name, marks FROM results WHERE marks > 75 ORDER BY marks DESC;
+CREATE INDEX idx_marks ON results(marks);

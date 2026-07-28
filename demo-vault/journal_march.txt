@@ -1,0 +1,4 @@
+Journal - mid March 2026
+Long day. Spent most of it debugging why the vector search kept returning the invoice
+files for a query about resumes - turned out the embedding model needed a different
+similarity threshold, not a code bug. Relieved once it clicked.

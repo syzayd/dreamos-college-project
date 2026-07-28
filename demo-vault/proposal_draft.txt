@@ -1,0 +1,4 @@
+Final year project proposal - working draft
+Three directions considered: Cognitive Spectre (deception platform), DreamOS (semantic OS layer),
+SentinelLLM (automated LLM red-teaming). DreamOS chosen: high complexity, futuristic appeal,
+strong systems-level scope for a final year submission.

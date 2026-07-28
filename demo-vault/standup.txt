@@ -1,0 +1,4 @@
+Daily standup - quick notes
+Zaid: indexing pipeline working, embeddings stored in ChromaDB.
+Om: comparing recall quality between nomic-embed-text and a second model.
+Krushna: gathering more OWASP-style problem framing for the intro slide (from SentinelLLM deck, reused).

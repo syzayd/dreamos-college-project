@@ -1,0 +1,4 @@
+Follow-ups after last review
+1. Add a confidence/similarity score to search results, not just a ranked list.
+2. Organizer suggestions must be reversible - never overwrite/delete originals silently.
+3. Knowledge graph and context memory engine are next-phase, after core 3 modules are solid.

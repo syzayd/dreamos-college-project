@@ -1,0 +1,4 @@
+Feedback from project guide, 2026-04-20
+- Like the sandboxed-vault approach for the demo - safer and repeatable.
+- Push for the organizer to explain WHY it suggests a category, not just output a label.
+- Semantic search needs a visible similarity/confidence score for the demo, not a black box.

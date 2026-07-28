@@ -1,0 +1,4 @@
+Random notes dump
+- Ask Krushna about the OWASP LLM Top 10 slide, might reuse framing style for DreamOS problem statement.
+- Remember to back up the ChromaDB folder before the demo, in case reindexing is needed.
+- Buy a new charger, old one is fraying.

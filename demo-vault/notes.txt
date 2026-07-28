@@ -1,0 +1,5 @@
+Team sync - DreamOS project
+Attendees: Zaid, Om, Krushna
+Decided: sandboxed demo vault instead of indexing real files, safer for the faculty demo.
+Action item: Zaid to scaffold backend, Om to help test semantic search quality,
+Krushna to prep the presentation deck update.

@@ -1,0 +1,3 @@
+This file is a backup of a backup, contents may be stale.
+Old idea: let users rename files with natural language too ("call this my March invoice").
+Might revisit as a stretch feature after the core 3 modules are demo-ready.

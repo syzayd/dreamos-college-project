@@ -1,0 +1,22 @@
+## Python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+## Data / generated at runtime
+backend/data/chroma/
+backend/data/dreamos.db
+*.db-journal
+
+## Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/src-tauri/target/
+
+## OS
+Thumbs.db
+.DS_Store
+
+## Env
+.env

@@ -1,0 +1,13 @@
+Zaid Ali Syed
+B.Tech Information Technology, MGM University (2024 - 2027 expected)
+
+EXPERIENCE
+- Built a resume job-fit matcher using embeddings and an LLM scoring layer, deployed on Streamlit.
+- Contributed a bug-fix pull request to an open-source GraphQL ORM (gqlalchemy).
+
+SKILLS
+Python, FastAPI, React, vector databases (ChromaDB), prompt engineering, Docker.
+
+PROJECTS
+- Resume Job-Fit AI: matches a resume against a job description and scores fit with an explanation.
+- TCMF: a retrieval-augmented crisis simulation research project on temporal-causal memory fusion.

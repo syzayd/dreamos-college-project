@@ -1,0 +1,3 @@
+Quotes I liked this semester
+"Make it work, make it right, make it fast." - Kent Beck
+"The best folder structure is the one you never have to think about."

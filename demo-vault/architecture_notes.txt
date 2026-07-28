@@ -1,0 +1,5 @@
+DreamOS architecture notes
+Backend: FastAPI service - indexing, semantic search, AI organizer, NL routing.
+Storage: SQLite for file metadata, ChromaDB for embeddings (nomic-embed-text via Ollama).
+Frontend: Tauri + React desktop shell, calls the local FastAPI backend.
+Local LLM for organizing/tagging/routing: llama3.2 via Ollama.

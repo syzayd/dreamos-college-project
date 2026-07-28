@@ -1,0 +1,3 @@
+DreamOS - early spec draft (v1, superseded)
+Idea: replace folders with tags. (Later revised: full semantic search + knowledge graph.)
+Modules originally planned: search, tagging. Expanded later to 6 modules per the proposal deck.

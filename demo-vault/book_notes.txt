@@ -1,0 +1,4 @@
+Notes from 'Thinking, Fast and Slow'
+System 1 is fast/intuitive, System 2 is slow/deliberate.
+Relevant to DreamOS: the NL interface should feel like System 1 (instant), but the
+organizer's reasoning should be inspectable like System 2 (explainable).

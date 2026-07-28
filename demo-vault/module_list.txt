@@ -1,0 +1,9 @@
+Core 3 modules (build first):
+1. Natural Language Interface
+2. Semantic Search Engine
+3. AI File Organizer
+
+Deferred until after review:
+4. Knowledge Graph
+5. Context Memory Engine
+6. Intelligent Workspace Manager

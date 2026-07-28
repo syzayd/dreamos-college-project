@@ -1,0 +1,4 @@
+Billing summary - March 2026
+Domain renewal (dreamos-project.dev): INR 899
+Ollama Cloud credits top-up: INR 1,500
+Total spent this month: INR 2,399
