@@ -7,6 +7,7 @@ __pycache__/
 ## Data / generated at runtime
 backend/data/chroma/
 backend/data/dreamos.db
+backend/data/launcher-backend.log*
 *.db-journal
 
 ## Node / frontend

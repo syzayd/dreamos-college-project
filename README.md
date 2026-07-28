@@ -51,6 +51,15 @@ frontend/             Tauri + React desktop shell
 
 ## Running it
 
+**One-click:** double-click `run-dreamos.bat` (or run `run-dreamos.ps1` in PowerShell). It
+starts Ollama if it's not already running, pulls `nomic-embed-text`/`llama3.2` if missing,
+starts the backend if it's not already running, indexes the vault, launches the app (the
+built release exe if present, otherwise falls back to `npm run tauri dev`), and waits for
+the window to close. On exit it stops only what it started - Ollama is left running if it
+was already up, since other local projects share the same instance.
+
+Manual steps, if you'd rather run each piece yourself:
+
 **1. Start Ollama** (desktop app or `ollama serve`) with `nomic-embed-text` and `llama3.2`
 pulled.
 
