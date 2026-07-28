@@ -62,6 +62,7 @@ def test_apply_organization_moves_file_and_is_reversible(isolated_env, fake_embe
     assert reverted_path == "invoice.txt"
     assert (vault / "invoice.txt").exists()
     assert not (vault / "invoices" / "invoice.txt").exists()
+    assert not (vault / "invoices").exists()  # empty category dir cleaned up, not left behind
 
 
 def test_apply_organization_without_suggestion_raises(isolated_env, fake_embed, fake_generate_json):

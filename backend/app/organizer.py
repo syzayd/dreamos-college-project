@@ -157,9 +157,13 @@ def revert_organization(rel_path: str) -> str:
         original_rel = row["original_path"]
         current_full = settings.vault_dir / rel_path
         original_full = settings.vault_dir / original_rel
+        category_dir = current_full.parent
 
         original_full.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(str(current_full), str(original_full))
+
+        if category_dir != settings.vault_dir and not any(category_dir.iterdir()):
+            category_dir.rmdir()
 
         conn.execute(
             "UPDATE files SET path = ?, organized_at = NULL WHERE path = ?",
