@@ -19,6 +19,33 @@ def test_handle_message_routes_search_intent(isolated_env, fake_embed, fake_gene
     assert response.search_results[0].path == "resume.txt"
 
 
+def test_handle_message_routes_open_intent(isolated_env, fake_embed, fake_generate_json):
+    vault = isolated_env
+    content = "my resume with all my work experience"
+    (vault / "resume.txt").write_text(content, encoding="utf-8")
+    fake_embed[content] = [1.0, 0.0, 0.0, 0.0]
+    fake_embed["open resume"] = [1.0, 0.0, 0.0, 0.0]
+    index_vault(vault)
+
+    fake_generate_json.append({"intent": "open", "query": "open resume"})
+
+    response = handle_message("open resume")
+
+    assert response.intent == "open"
+    assert response.open_path is not None
+    assert response.open_path.endswith("resume.txt")
+    assert len(response.search_results) == 1
+
+
+def test_handle_message_open_intent_with_no_match(isolated_env, fake_embed, fake_generate_json):
+    fake_generate_json.append({"intent": "open", "query": "nonexistent file"})
+
+    response = handle_message("open nonexistent file")
+
+    assert response.intent == "open"
+    assert response.open_path is None
+
+
 def test_handle_message_routes_organize_intent(isolated_env, fake_embed, fake_generate_json):
     vault = isolated_env
     content = "meeting notes from today's sync"

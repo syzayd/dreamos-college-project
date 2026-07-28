@@ -3,13 +3,16 @@ from dataclasses import dataclass, field
 from app import organizer, search
 from app.ollama_client import generate_json
 
-INTENTS = ["search", "organize", "other"]
+INTENTS = ["search", "open", "organize", "other"]
 
 SYSTEM_PROMPT = (
     "You classify what a user wants from a semantic file-management assistant. Respond with "
-    'JSON only, matching this shape exactly: {"intent": one of ["search", "organize", "other"], '
-    '"query": "the search query text, empty string if intent is not search"}. '
-    "Use 'search' when the user is trying to find or recall a file or its contents. "
+    'JSON only, matching this shape exactly: {"intent": one of ["search", "open", "organize", "other"], '
+    '"query": "the search/open target text, empty string if intent is \'other\'"}. '
+    "Use 'open' when the user wants to directly open/launch/view a specific file right now "
+    "(e.g. \"open my resume\", \"open the invoice\") - this differs from 'search', which is "
+    "for exploring or recalling what exists (e.g. \"find my resume\", \"do I have anything "
+    "about invoices\") without necessarily wanting it opened. "
     "Use 'organize' when the user wants files tagged, categorized, sorted, or cleaned up. "
     "Use 'other' for anything else (greetings, unrelated questions)."
 )
@@ -21,6 +24,7 @@ class NLResponse:
     message: str
     search_results: list[search.SearchHit] = field(default_factory=list)
     organize_suggestions: list[dict] = field(default_factory=list)
+    open_path: str | None = None
 
 
 def handle_message(user_message: str) -> NLResponse:
@@ -41,6 +45,22 @@ def handle_message(user_message: str) -> NLResponse:
             intent=intent,
             message=f"Found {len(hits)} file(s) matching '{query}'.",
             search_results=hits,
+        )
+
+    if intent == "open":
+        query = classification.get("query") or user_message
+        hits = search.semantic_search(query, top_k=1)
+        if not hits:
+            return NLResponse(
+                intent=intent,
+                message=f"No file found matching '{query}'.",
+            )
+        best = hits[0]
+        return NLResponse(
+            intent=intent,
+            message=f"Opening {best.name}...",
+            search_results=hits,
+            open_path=best.abs_path,
         )
 
     if intent == "organize":

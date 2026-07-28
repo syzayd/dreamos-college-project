@@ -7,6 +7,7 @@ export interface SearchHit {
   summary: string | null;
   snippet: string;
   similarity: number;
+  abs_path: string;
 }
 
 export interface OrganizeSuggestion {
@@ -19,10 +20,11 @@ export interface OrganizeSuggestion {
 }
 
 export interface ChatResponse {
-  intent: "search" | "organize" | "other";
+  intent: "search" | "open" | "organize" | "other";
   message: string;
   search_results: SearchHit[];
   organize_suggestions: OrganizeSuggestion[];
+  open_path: string | null;
 }
 
 export interface IndexResult {

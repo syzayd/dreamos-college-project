@@ -116,4 +116,5 @@ def chat(req: ChatRequest) -> dict:
         "message": response.message,
         "search_results": [asdict(h) for h in response.search_results],
         "organize_suggestions": response.organize_suggestions,
+        "open_path": response.open_path,
     }

@@ -14,6 +14,7 @@ class SearchHit:
     summary: str | None
     snippet: str
     similarity: float
+    abs_path: str
 
 
 def semantic_search(query: str, top_k: int | None = None) -> list[SearchHit]:
@@ -54,6 +55,7 @@ def semantic_search(query: str, top_k: int | None = None) -> list[SearchHit]:
                     summary=row["summary"],
                     snippet=snippet,
                     similarity=round(similarity, 4),
+                    abs_path=str((settings.vault_dir / path).resolve()),
                 )
             )
     return hits

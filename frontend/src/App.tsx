@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { openPath } from "@tauri-apps/plugin-opener";
 import "./App.css";
 import {
   applyOrganization,
@@ -117,6 +118,19 @@ function App() {
     try {
       const response = await sendChatMessage(trimmed);
       setHistory((prev) => [...prev, { role: "assistant", response }]);
+      if (response.intent === "open" && response.open_path) {
+        try {
+          await openPath(response.open_path);
+        } catch (err) {
+          setHistory((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              text: `Couldn't open the file: ${err instanceof Error ? err.message : String(err)}`,
+            },
+          ]);
+        }
+      }
     } catch (err) {
       setHistory((prev) => [
         ...prev,

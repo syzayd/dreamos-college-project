@@ -15,8 +15,11 @@ describing what you want instead of remembering exact names or paths.
 
 Core 3 modules from the project proposal are built and working:
 
-- **Natural Language Interface** - a chat-style input that classifies intent (search vs.
-  organize) and routes to the right module (`backend/app/nl_interface.py`)
+- **Natural Language Interface** - a chat-style input that classifies intent (search, open,
+  or organize) and routes to the right module (`backend/app/nl_interface.py`). "Open" intents
+  (e.g. "open my resume") resolve to the best-matching file and actually launch it in its
+  default OS application via Tauri's opener plugin, scoped to `$HOME/**` in
+  `frontend/src-tauri/capabilities/default.json`.
 - **Semantic Search Engine** - natural-language queries over the vault via embeddings +
   ChromaDB, with a tuned similarity threshold (`backend/app/search.py`)
 - **AI File Organizer** - LLM-generated summary/tags/category per file, with a reversible
