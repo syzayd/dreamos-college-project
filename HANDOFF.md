@@ -48,26 +48,39 @@ independent from every other project in this workspace - own repo, own venv, no 
   category distribution in this session's transcript), and the full apply -> search-at-new-
   path -> revert cycle (confirmed the file returns to its original path and gets
   re-embedded correctly both times).
-- Initial commit made: "Scaffold DreamOS backend: indexing, semantic search, AI organizer,
-  NL interface" (backend + demo-vault + docs, `.venv` and DB/chroma data correctly
-  gitignored).
+- **Full end-to-end UI verification**: `npm run tauri dev` built clean (first-ever Tauri
+  Rust compile on this machine, ~360 crates, ~2 min) and launched a real window titled
+  "DreamOS". Confirmed the actual React app (via a real browser against the same Vite dev
+  server Tauri loads, since native-window screenshots hit a DPI/capture-region mismatch
+  with this machine's screenshot tooling) round-trips correctly against the live backend:
+  typed "find my resume" -> NL interface routed to search -> result cards rendered with
+  match %; typed "organize my unsorted files" -> organize suggestion card rendered ->
+  clicked Apply -> file actually moved on disk into `personal/` and card updated to "Moved
+  to personal/" -> clicked Undo -> file moved back and card updated to "Reverted". Both
+  `npm run build` (tsc + vite) and `cargo check` pass clean.
+- **Bug found and fixed during that verification pass**: `revert_organization` moved the
+  file back out but left the now-empty category directory behind (e.g. an empty
+  `personal/` folder lingering in the vault). Fixed to `rmdir` the category directory when
+  it's empty after the move; added a regression assertion in
+  `test_apply_organization_moves_file_and_is_reversible`. All 19 tests still pass.
+- Two commits made: backend scaffold (indexing/search/organizer/NL interface + tests), then
+  frontend + the revert cleanup fix. `.venv`, `node_modules`, and `src-tauri/target` are all
+  correctly gitignored.
 
-## In progress / next steps
+## Next steps
 
-- `npm run tauri dev` was mid-build (first-ever Tauri Rust compile on this machine, ~360
-  crates) when this handoff was written - confirm it finished, launched a window, and that
-  the chat UI actually talks to the backend at `http://localhost:8420` end-to-end from
-  inside the Tauri webview (curl-level verification is done; the native window itself
-  hadn't been visually confirmed yet as of this note).
-- Commit the frontend once verified.
 - Known model-quality limitation to document, not fix further: `llama3.2:3b`
   categorization has a couple of genuinely defensible edge cases (e.g. a note that
   discusses a project decision could reasonably be `project_docs` or `misc`) - this is
   realistic small-local-model behavior worth reporting honestly rather than a bug to chase.
 - Deferred modules (Knowledge Graph, Context Memory Engine, Intelligent Workspace Manager)
-  not started - by design, per the "core 3 first" scope decision.
+  not started - by design, per the "core 3 first" scope decision. Revisit after Zaid/team
+  review.
 - No GitHub remote yet - repo is local-only per this session's scope decision; revisit if a
   submission requirement needs one.
+- No `npm run tauri build` (production installer) has been produced yet - only the dev
+  build was verified. Do this before any actual faculty demo/submission if a packaged
+  installer is needed.
 
 ## How to resume
 
