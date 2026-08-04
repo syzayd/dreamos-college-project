@@ -58,6 +58,18 @@ and `llama3.2` pulled.
 empirically against the demo vault's known-relevant/known-irrelevant query pairs. See global
 memory `feedback-embedding-anisotropy-threshold` for background on this.
 
+## Project Monitoring - I report
+
+`docs/DreamOS-Project-Monitoring-I.docx` is the deliverable for the department's Project
+Monitoring - I checkpoint (guidelines PDF: literature review, requirement analysis, system
+design with diagrams). It documents the same state as this file and the README: 3 of 6
+proposed modules built/tested/packaged (~50% of module scope), 21/21 backend tests passing.
+Diagram sources (Mermaid `.mmd` + the wireframe `.html`) and their rendered `.png`s are in
+`docs/diagrams/`. `docs/build_report.js` (needs `npm install -g docx` or a local `npm link docx`)
+regenerates the docx from those images and the hardcoded report text - regenerate a diagram with
+`npx -y @mermaid-js/mermaid-cli -i docs/diagrams/NAME.mmd -o docs/diagrams/NAME.png -b white -s 3`
+first if a diagram needs to change, then re-run `node docs/build_report.js` from `docs/`.
+
 ## Regenerating the demo vault
 
 ```

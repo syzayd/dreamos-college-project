@@ -1,0 +1,33 @@
+flowchart TB
+    USER(("User"))
+    P1["1.0\nClassify Intent"]
+    P2["2.0\nSemantic Search"]
+    P3["3.0\nOrganize Files"]
+    P4["4.0\nRoute Response"]
+    P5["5.0\nOpen File\n(Tauri opener)"]
+    P0["0.0\nIndex Vault\n(background)"]
+
+    D1[("D1 Chroma\nVector Store")]
+    D2[("D2 SQLite\nMetadata")]
+    D3[("D3 Vault Files")]
+
+    USER -->|message| P1
+    P1 -->|search query| P2
+    P1 -->|open query| P2
+    P1 -->|organize request| P3
+    P1 -->|open_path| P5
+
+    P2 <--> D1
+    P2 <--> D2
+    P3 <--> D2
+    P3 <--> D3
+    P5 --> D3
+
+    P2 -->|hits| P4
+    P3 -->|suggestion| P4
+    P4 -->|response| USER
+    P5 -->|launched file| USER
+
+    P0 --> D1
+    P0 --> D2
+    P0 --> D3

@@ -1,0 +1,18 @@
+flowchart LR
+    actor(("User"))
+    UC1(["Search files by meaning"])
+    UC2(["Open a file by description"])
+    UC3(["Preview unorganized files"])
+    UC4(["Apply AI organization"])
+    UC5(["Revert organization"])
+    UC6(["Index the vault"])
+
+    actor --> UC1
+    actor --> UC2
+    actor --> UC3
+    actor --> UC4
+    actor --> UC5
+    actor --> UC6
+
+    UC4 -.includes.-> UC3
+    UC2 -.includes.-> UC1

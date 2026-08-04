@@ -1,0 +1,24 @@
+erDiagram
+    FILES {
+        int id PK
+        text path UK
+        text original_path
+        text name
+        text extension
+        int size_bytes
+        real mtime
+        text content_hash
+        text indexed_at
+        text summary
+        text tags
+        text category
+        text organize_reasoning
+        text organized_at
+    }
+    VECTOR_ENTRIES {
+        text id PK
+        text document
+        vector embedding
+        json metadata
+    }
+    FILES ||--o| VECTOR_ENTRIES : "indexed as"

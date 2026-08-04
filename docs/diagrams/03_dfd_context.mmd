@@ -1,0 +1,12 @@
+flowchart LR
+    USER(("User"))
+    DREAMOS["0\nDreamOS System"]
+    OLLAMA[("Ollama\nLocal LLM Runtime")]
+    VAULT[("File Vault")]
+
+    USER -->|"natural language request"| DREAMOS
+    DREAMOS -->|"search results / opened file / organize summary"| USER
+    DREAMOS -->|"embed / generate requests"| OLLAMA
+    OLLAMA -->|"embeddings / JSON completions"| DREAMOS
+    DREAMOS -->|"read + move files"| VAULT
+    VAULT -->|"file contents"| DREAMOS

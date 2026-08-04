@@ -122,3 +122,10 @@ python backend/scripts/generate_demo_vault.py --reset
 
 See `CLAUDE.md` for scope decisions, the embedding-similarity tuning note, and why the vault
 is sandboxed rather than a real personal folder.
+
+## Project Monitoring - I report
+
+`docs/DreamOS-Project-Monitoring-I.docx` is the department deliverable for the Project
+Monitoring - I checkpoint: literature review, requirement analysis, system design (architecture,
+DFDs, UML, ER diagram, wireframe), and current implementation status. Diagram sources are in
+`docs/diagrams/`.

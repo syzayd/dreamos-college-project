@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f3f3f3; }
+  .frame { width: 1040px; height: 700px; margin: 20px auto; background: #ffffff; border: 2px solid #333; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+  .titlebar { height: 40px; background: #e2e2e2; border-bottom: 2px solid #333; display: flex; align-items: center; padding: 0 14px; font-size: 14px; font-weight: bold; color: #333; }
+  .titlebar .dots { display: flex; gap: 6px; margin-right: 12px; }
+  .titlebar .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #333; }
+  .body { flex: 1; display: flex; flex-direction: column; padding: 18px 22px; gap: 14px; }
+  .history { flex: 1; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+  .bubble { max-width: 62%; padding: 12px 14px; border: 2px solid #333; border-radius: 10px; font-size: 13px; color: #333; }
+  .bubble.user { align-self: flex-end; background: #eef2ff; }
+  .bubble.assistant { align-self: flex-start; background: #f7f7f7; }
+  .label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: #777; margin-bottom: 4px; font-weight: bold; }
+  .card { border: 1.5px dashed #999; border-radius: 6px; padding: 8px 10px; margin-top: 8px; font-size: 12px; background: #fff; min-width: 280px; }
+  .card .row { display: flex; justify-content: space-between; gap: 16px; padding: 3px 0; border-bottom: 1px dotted #ccc; }
+  .card .row:last-child { border-bottom: none; }
+  .inputbar { display: flex; gap: 10px; border-top: 2px solid #333; padding-top: 14px; }
+  .inputbox { flex: 1; height: 42px; border: 2px solid #333; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; color: #999; font-size: 13px; }
+  .sendbtn { width: 90px; height: 42px; border: 2px solid #333; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; background: #333; color: #fff; }
+  .caption { text-align:center; font-family: Arial; font-size: 13px; color:#333; margin-top: -6px; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="titlebar"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>DreamOS</div>
+    <div class="body">
+      <div class="history">
+        <div class="bubble user">
+          <div class="label">You</div>
+          find my resume with work experience
+        </div>
+        <div class="bubble assistant">
+          <div class="label">DreamOS - search intent</div>
+          Found 1 match.
+          <div class="card">
+            <div class="row"><span>resume_final_v3.txt</span><span>score 0.81</span></div>
+          </div>
+        </div>
+        <div class="bubble user">
+          <div class="label">You</div>
+          organize my unsorted files
+        </div>
+        <div class="bubble assistant">
+          <div class="label">DreamOS - organize intent</div>
+          3 files suggested for categorization.
+          <div class="card">
+            <div class="row"><span>invoice_mar.pdf</span><span>category: finance</span></div>
+            <div class="row"><span>trip_notes.md</span><span>category: personal</span></div>
+            <div class="row"><span>meeting_2.docx</span><span>category: work</span></div>
+          </div>
+        </div>
+        <div class="bubble user">
+          <div class="label">You</div>
+          open resume
+        </div>
+        <div class="bubble assistant">
+          <div class="label">DreamOS - open intent</div>
+          Opening resume_final_v3.txt&hellip; (launched in default app)
+        </div>
+      </div>
+      <div class="inputbar">
+        <div class="inputbox">describe what you want&hellip;</div>
+        <div class="sendbtn">Send</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">Fig. Chat-style single-surface wireframe - one input routes to search / open / organize by classified intent</div>
+</body>
+</html>

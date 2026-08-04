@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor U as User
+    participant UI as React UI (App.tsx)
+    participant API as FastAPI /chat
+    participant NLI as nl_interface.py
+    participant LLM as Ollama (llama3.2)
+    participant SRCH as search.py
+    participant CHR as ChromaDB
+    participant OPEN as Tauri opener plugin
+
+    U->>UI: types "open my resume"
+    UI->>API: POST /chat {message}
+    API->>NLI: handle_message(message)
+    NLI->>LLM: classify intent (temperature=0)
+    LLM-->>NLI: {intent: "open", query: "resume"}
+    NLI->>SRCH: semantic_search("resume", top_k=1)
+    SRCH->>CHR: query nearest embeddings
+    CHR-->>SRCH: best match + cosine score
+    SRCH-->>NLI: SearchHit(abs_path=...)
+    NLI-->>API: NLResponse(open_path=...)
+    API-->>UI: {intent, message, open_path}
+    UI->>OPEN: openPath(abs_path)
+    OPEN-->>U: launches file in default app

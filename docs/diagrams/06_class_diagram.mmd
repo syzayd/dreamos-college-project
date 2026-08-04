@@ -1,0 +1,40 @@
+classDiagram
+    class SearchHit {
+      +str path
+      +str abs_path
+      +str name
+      +float score
+      +str snippet
+    }
+    class NLResponse {
+      +str intent
+      +str message
+      +List~SearchHit~ search_results
+      +List~dict~ organize_suggestions
+      +str open_path
+    }
+    class OrganizeSuggestion {
+      +str path
+      +str summary
+      +List~str~ tags
+      +str category
+      +str reasoning
+    }
+    class Settings {
+      +Path vault_dir
+      +Path chroma_dir
+      +Path sqlite_path
+      +str embed_model
+      +str llm_model
+      +float search_similarity_threshold
+      +int search_top_k
+    }
+    class OllamaClient {
+      +embed(text) List~float~
+      +generate_json(prompt) dict
+    }
+
+    NLResponse "1" --> "*" SearchHit : search_results
+    NLResponse "1" --> "*" OrganizeSuggestion : organize_suggestions
+    NLResponse ..> OllamaClient : uses
+    SearchHit ..> Settings : reads
