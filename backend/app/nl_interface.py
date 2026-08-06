@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
 from app import organizer, search
+from app.config import settings
 from app.ollama_client import generate_json
 
 INTENTS = ["search", "open", "organize", "other"]
@@ -49,17 +50,27 @@ def handle_message(user_message: str) -> NLResponse:
 
     if intent == "open":
         query = classification.get("query") or user_message
-        hits = search.semantic_search(query, top_k=1)
+        hits = search.semantic_search(query, top_k=3)
         if not hits:
             return NLResponse(
                 intent=intent,
                 message=f"No file found matching '{query}'.",
             )
         best = hits[0]
+        runner_up = hits[1] if len(hits) > 1 else None
+        if runner_up is not None and (best.similarity - runner_up.similarity) < settings.open_ambiguity_margin:
+            return NLResponse(
+                intent=intent,
+                message=(
+                    f"Found {len(hits)} files that could match '{query}' - too close to pick "
+                    "automatically. Did you mean one of these?"
+                ),
+                search_results=hits,
+            )
         return NLResponse(
             intent=intent,
             message=f"Opening {best.name}...",
-            search_results=hits,
+            search_results=[best],
             open_path=best.abs_path,
         )
 

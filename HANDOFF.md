@@ -65,6 +65,17 @@ independent from every other project in this workspace - own repo, own venv, no 
   has a couple of genuinely defensible edge cases (e.g. a note discussing a project decision
   could reasonably be `project_docs` or `misc`) - realistic small-local-model behavior worth
   reporting honestly rather than chasing as a bug.
+- Known limitation, same category (found 2026-08-06): the "open" intent auto-launches its
+  single best semantic match, guarded by an ambiguity margin (`nl_interface.py`,
+  `settings.open_ambiguity_margin`) that blocks auto-open when the top two candidates are
+  within 0.05 similarity of each other. That catches close ties, but not a *confidently wrong*
+  single match - e.g. "open my CV" resolves to a teammate's draft CV
+  (`Untitled document.txt`) instead of your own resume (`final_final_v3.txt`), because
+  `nomic-embed-text` keys off the literal word "CV" vs "resume" with no concept of file
+  ownership. **Demo phrasing that works reliably: "open my resume" / "open the resume"**
+  (0.62 similarity, clear winner). Avoid "open my CV" live. Decided 2026-08-06 not to chase
+  this further pre-demo (would need hybrid lexical+semantic reranking or a UI confirm-before-open
+  step) - rehearsing around the known-bad phrasing is the right scope for now.
 - Before the actual Monitoring-I presentation: run `run-dreamos.bat` once ahead of time to
   warm up any model pulls, and reset the demo vault with
   `python backend/scripts/generate_demo_vault.py --reset` after (not before) demoing the

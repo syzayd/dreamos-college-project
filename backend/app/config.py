@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     search_similarity_threshold: float = 0.55
     search_top_k: int = 8
 
+    # "open" auto-launches a file, so a close runner-up (e.g. a teammate's similarly-worded
+    # CV) must block auto-open rather than silently launching the wrong person's file.
+    open_ambiguity_margin: float = 0.05
+
     supported_extensions: tuple[str, ...] = (
         ".txt",
         ".md",
