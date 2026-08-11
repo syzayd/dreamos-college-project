@@ -70,6 +70,11 @@ regenerates the docx from those images and the hardcoded report text - regenerat
 `npx -y @mermaid-js/mermaid-cli -i docs/diagrams/NAME.mmd -o docs/diagrams/NAME.png -b white -s 3`
 first if a diagram needs to change, then re-run `node docs/build_report.js` from `docs/`.
 
+`docs/DreamOS-Project-Monitoring-I.pptx` is the companion slide deck (5 slides) for the same
+checkpoint. Regenerate with `node docs/build_pptx.js` (needs `npm install -g pptxgenjs
+react-icons react react-dom sharp`, then `npm link` each into the working directory - same
+global-install-not-on-local-require-path gotcha as `docx`). Reuses `docs/diagrams/01_architecture.png`.
+
 ## Regenerating the demo vault
 
 ```
